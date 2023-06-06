@@ -8,7 +8,7 @@ app.use(cors());
 
 app.use('/eventos', router);
 
-const port = 3003;
+const port = 3000;
 const database = require('./database/mongo.js');
 
 app.listen(port, ()=>{

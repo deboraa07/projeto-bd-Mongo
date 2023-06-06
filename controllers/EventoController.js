@@ -15,7 +15,6 @@ const buscarPorConteudo = async (req,res) =>{
 }
 
 const salvarEvento = async (req,res) => {
-    console.log("Teste");
    Evento.create(req.body).then(result => res.status(200).send
     (result)).catch(e => res.status(400).send(e));
 }
@@ -24,19 +23,18 @@ const salvarEvento = async (req,res) => {
 const deletarEvento = async (req,res) =>{
    Evento.deleteOne({_id:req.params.id}).then(result => {
         if(result.deletedCount > 0) res.status(200).send('Removido com sucesso');
-        else res.status(404).send('Evento não encontrada');
+        else res.status(404).send('Evento não encontrado');
     }).catch(e => res.status(400).send(e));
 }
 
 const atualizarEvento = async (req,res) =>{
-    const evento =  await Evento.findById({_id:req.params.id});
-    if(evento==null){
-        res.status(404).send('Evento nao encontrado');
-    }else{
-        evento[0].overwrite(req.body);
-        await evento.save();
-        res.status(200).send('Atualizado com sucesso')
-    }
+    await Evento.findById(req.params.id).then(result =>{
+        if(result){
+            result.set(req.body);
+            result.save();
+            res.status(200).send('Atualizado com sucesso');
+        }
+    }).catch(e => res.status(404).send('Anotação não encontrada'));
 }
 
 
