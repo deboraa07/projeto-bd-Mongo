@@ -12,7 +12,7 @@ const buscarPorConteudo = async (req,res) =>{
     res.status(200).send(result);
     }).catch(e => res.status(400).send(e));
 
-}
+}   
 
 const salvarEvento = async (req,res) => {
    Evento.create(req.body).then(result => res.status(200).send
@@ -34,7 +34,7 @@ const atualizarEvento = async (req,res) =>{
             result.save();
             res.status(200).send('Atualizado com sucesso');
         }
-    }).catch(e => res.status(404).send('Anotação não encontrada'));
+    }).catch(e => res.status(404).send('Evento não encontrado'));
 }
 
 
