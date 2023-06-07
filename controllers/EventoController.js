@@ -7,10 +7,10 @@ const listarEventos = async (req,res) => {
 }
 
 const buscarPorConteudo = async (req,res) =>{
-    const {textSearch} = req.body
-   Evento.find({text:{$search:textSearch}}).then(result =>{
-    res.status(200).send(result);
+    Evento.find({$text:{$search:req.params.conteudo}},{_id:true,__v:false}).then(result => {
+        res.status(200).send(result); 
     }).catch(e => res.status(400).send(e));
+
 
 }   
 

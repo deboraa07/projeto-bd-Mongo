@@ -40,10 +40,19 @@ button a {
     height: 30px;
     border-radius: 72px;
 }
+#btnListar:hover{
+  box-shadow: 0 0 20px #A9A9A9;
+}
+#btnPesquisar:hover{
+  box-shadow: 0 0 20px #A9A9A9;
+}
 #button-voltar{
     float: right;
     width: 10%;
     height: 30px;
     margin-right: 5px;
     border-radius: 72px;
+}
+#button-voltar:hover{
+  box-shadow: 0 0 20px #A9A9A9;
 }

@@ -122,7 +122,7 @@ window.onload = () => {
     }
   });
 
-  /*btnPesquisar.addEventListener('click', () => {
+  btnPesquisar.addEventListener('click', () => {
     const textSearch = prompt('Digite o termo de busca:');
     if (textSearch) {
       eventosDiv.innerHTML = 'Pesquisando...';
@@ -132,6 +132,11 @@ window.onload = () => {
         .then(eventos => {
           eventosDiv.innerHTML = '';
 
+          if(eventos.length === 0){
+            const mensagemP = document.createElement('p');
+            mensagemP.textContent = 'Nenhum evento encontrado.';
+            eventosDiv.appendChild(mensagemP);
+          } else{
           eventos.forEach(evento => {
             const eventoDiv = document.createElement('div');
             eventoDiv.classList.add('evento-container');
@@ -162,6 +167,7 @@ window.onload = () => {
 
             eventosDiv.appendChild(eventoDiv);
           });
+        }
 
           listaVisivel = true;
         })
@@ -170,7 +176,7 @@ window.onload = () => {
           console.error(error);
         });
     }
-  });*/
+  });
 };
 
 
