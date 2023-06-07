@@ -20,10 +20,11 @@ function initMap() {
   marker = new google.maps.Marker({
       map: map,
       position: center,
-      draggable: true
+      draggable: true,
   });
+  
   loadAllMarkers(map);
-
+  
   map.addListener("click", (evt) => {
     addMarker(evt);
   });
@@ -40,24 +41,30 @@ function initMap() {
   async function salvar(marker, map){
 
     const obj = {
-      nome: document.getElementById('nome').value,
-      descricao: document.getElementById('desc').value,
-      local: document.getElementById('local').value,
-      dataDeInicio: document.getElementById('data-inicio').value,
-      dataDeTermino: document.getElementById('data-termino').value,
-      lat: marker.getPosition().lat(),
-      lng: marker.getPosition().lng()
-  };
+        nome: document.getElementById('nome').value,
+        descricao: document.getElementById('desc').value,
+        local: document.getElementById('local').value,
+        dataDeInicio: document.getElementById('data-inicio').value,
+        dataDeTermino: document.getElementById('data-termino').value,
+        lat: marker.getPosition().lat(),
+        lng: marker.getPosition().lng()
+    };
 
-  console.log(obj);
-  await fetch("//localhost:3000/eventos",{
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(obj)
-   })}
+    console.log(obj);
+    await fetch("//localhost:3000/eventos",{
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+     })
+     document.getElementById('nome').value = '';
+     document.getElementById('desc').value = '';
+     document.getElementById('local').value = '';
+     document.getElementById('data-inicio').value = '';
+     document.getElementById('data-termino').value = '';
+    }
 
 function addMarker(evt){
     marker.setPosition(evt.latLng);
@@ -73,7 +80,7 @@ async function loadAllMarkers(map) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
-  }).then(response => response.json());
+  }).then(response => response.json()); 
   // Cria um marcador para cada ponto no banco de dados
   for (let i = 0; i < evento.length; i++) {
     createNewMarker(
@@ -83,7 +90,7 @@ async function loadAllMarkers(map) {
       evento[i].nome
       )
 }
-function createNewMarker(map, lat, lng) {
+function createNewMarker(map, lat, lng, name) {
 
   let pos = {
     lat: lat,
@@ -95,7 +102,7 @@ function createNewMarker(map, lat, lng) {
     map: map,
     position: pos,
     draggable: false,
-    title: nome,
+    title: name
   });
 
   // Salva os marcadores em uma array, mas por enquanto
@@ -103,13 +110,14 @@ function createNewMarker(map, lat, lng) {
   newMarkers.push(markerPoints);
   return marker;
 }
-    //Cria um marcador novo toda vez que o usuário adiciona um ponto no banco de dados.
-     createNewMarker(
+
+     // Cria um marcador novo toda vez que o usuário adiciona um ponto
+     // no banco de dados.
+    createNewMarker(
       map,
       obj.lat,
       obj.lng,
-      obj.nome  
-    ) 
+      obj.nome
+    )
 }}
-    
 

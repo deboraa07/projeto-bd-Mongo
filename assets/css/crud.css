@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000B2D;
+    color: white;
+}
+
+.evento-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+    margin: 5px;
+  }
+
+  .delete-button {
+    margin-right: 8px;
+    border-radius: 72px;
+    height: 30px;
+    width: 30%;
+  }
+  .update-button{
+    border-radius: 72px;
+    height: 30px;
+    width: 30%;
+  }
+button a {
+    text-decoration: none;
+    color: white;
+}
+#eventos{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 7px;
+}
+#btnListar, #btnPesquisar{
+    width: 15%;
+    height: 30px;
+    border-radius: 72px;
+}
+#button-voltar{
+    float: right;
+    width: 10%;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 72px;
+}
