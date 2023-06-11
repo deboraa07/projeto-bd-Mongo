@@ -35,9 +35,16 @@ button a {
     flex-wrap: wrap;
     margin-top: 7px;
 }
+
+.crud h1{
+  text-align: center;
+}
+
 #btnListar, #btnPesquisar{
-    width: 15%;
-    height: 30px;
+    margin-left: 20%;
+    margin-bottom: 2%;
+    width: 50%;
+    height: 50px;
     border-radius: 72px;
 }
 #btnListar:hover{

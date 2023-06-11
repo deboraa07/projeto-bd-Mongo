@@ -35,7 +35,15 @@ window.onload = () => {
             const localP = document.createElement('p');
             localP.textContent = `Local: ${evento.local}`;
             eventoDiv.appendChild(localP);
-
+            
+            const dataInicioP = document.createElement('p');
+            dataInicioP.textContent = `Data de Início: ${evento.dataDeInicio}`;
+            eventoDiv.appendChild(dataInicioP);
+            
+            const dataTerminoP = document.createElement('p');
+            dataTerminoP.textContent = `Data de Término: ${evento.dataDeTermino}`;
+            eventoDiv.appendChild(dataTerminoP);
+            
             const latitudeP = document.createElement('p');
             latitudeP.textContent = `Latitude: ${evento.lat}`;
             eventoDiv.appendChild(latitudeP);
@@ -43,15 +51,6 @@ window.onload = () => {
             const longitudeP = document.createElement('p');
             longitudeP.textContent = `Longitude: ${evento.lng}`;
             eventoDiv.appendChild(longitudeP);
-
-            const dataInicioP = document.createElement('p');
-            dataInicioP.textContent = `Data de Início: ${evento.dataDeInicio}`;
-            eventoDiv.appendChild(dataInicioP);
-
-            const dataTerminoP = document.createElement('p');
-            dataTerminoP.textContent = `Data de Término: ${evento.dataDeTermino}`;
-            eventoDiv.appendChild(dataTerminoP);
-
             // Botão de DELETAR
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-button');
@@ -74,7 +73,7 @@ window.onload = () => {
             updateButton.classList.add('update-button');
             updateButton.textContent = 'Atualizar';
             updateButton.addEventListener('click', () => {
-              const novoNome = prompt('Digite o novo nome do evento:', evento.nome);
+              const novoNome = prompt('Digite o novo nome do evento: (*para os campos que não deseja alterar basta clicar em ok)', evento.nome);
               const novaDescricao = prompt('Digite a nova descrição do evento:', evento.descricao);
               const novoLocal = prompt('Digite o novo local do evento:', evento.local);
               const novaLat = prompt('Digite a nova latitude do evento:', evento.lat);
@@ -148,10 +147,12 @@ window.onload = () => {
             const nomeP = document.createElement('p');
             nomeP.textContent = `Nome: ${evento.nome}`;
             eventoDiv.appendChild(nomeP);
+            
 
             const descricaoP = document.createElement('p');
             descricaoP.textContent = `Descrição: ${evento.descricao}`;
             eventoDiv.appendChild(descricaoP);
+            
 
             const localP = document.createElement('p');
             localP.textContent = `Local: ${evento.local}`;
@@ -168,7 +169,6 @@ window.onload = () => {
             eventosDiv.appendChild(eventoDiv);
           });
         }
-
           listaVisivel = true;
         })
         .catch(error => {
