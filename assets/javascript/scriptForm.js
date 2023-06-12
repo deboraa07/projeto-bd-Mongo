@@ -171,11 +171,7 @@ window.onload = () => {
         }
           listaVisivel = true;
         })
-        .catch(error => {
-          eventosDiv.textContent = 'Erro ao buscar eventos';
-          console.error(error);
-        });
-    }
+      }
   });
 };
 
