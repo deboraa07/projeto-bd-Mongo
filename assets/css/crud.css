@@ -41,10 +41,10 @@ button a {
 }
 
 #btnListar, #btnPesquisar{
-    margin-left: 20%;
+    margin-left: 35%;
     margin-bottom: 2%;
-    width: 50%;
-    height: 50px;
+    width: 20%;
+    height: 40px;
     border-radius: 72px;
 }
 #btnListar:hover{
